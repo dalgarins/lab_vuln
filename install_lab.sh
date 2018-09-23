@@ -57,6 +57,7 @@ git checkout master
 mvn clean install
 #mvn -pl webgoat-server spring-boot:run
 
+cd..
 echo "Installing dvwa"
 sudo docker pull vulnerables/web-dvwa
 sudo docker run --rm -it -p 80:80 vulnerables/web-dvwa
