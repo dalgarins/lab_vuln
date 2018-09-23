@@ -5,6 +5,8 @@ then
 mkdir lab_vm
 fi
 
+cd lab_vm
+
 echo "Installing sdk man"
 sudo apt-get install curl
 curl -s "https://get.sdkman.io" | bash
@@ -39,17 +41,22 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 echo "Installing OWASP ZAP"
+wget https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2_7_0_unix.sh -O zap.sh
 sudo chmod +x zap.sh
 sudo ./zap.sh
 
 echo "Installing burp-suite"
-
 curl -o burp.sh -O "https://portswigger.net/burp/releases/download?product=community&version=1.7.36&type=linux"
 chmod +x burp.sh
 sudo ./burp.sh
 
-cd lab_vm
-curl https://raw.githubusercontent.com/WebGoat/WebGoat/develop/docker-compose.yml | sudo docker-compose -f - up
+echo "Installing web goat"
+git clone git@github.com:WebGoat/WebGoat.git
+cd WebGoat
+git checkout master
+mvn clean install
+#mvn -pl webgoat-server spring-boot:run
 
+echo "Installing dvwa"
 sudo docker pull vulnerables/web-dvwa
 sudo docker run --rm -it -p 80:80 vulnerables/web-dvwa
