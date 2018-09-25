@@ -53,7 +53,7 @@ chmod +x burp.sh
 sudo ./burp.sh
 
 echo "Installing web goat"
-git clone https://github.com/dalgarins/lab_vuln.git
+git clone https://github.com/WebGoat/WebGoat.git
 cd WebGoat
 git checkout master
 mvn clean install
