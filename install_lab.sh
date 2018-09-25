@@ -18,6 +18,8 @@ sdk install maven
 
 source ~/.bashrc
 
+export INSTALL4J_JAVA_HOME=$SDKMAN_DIR/candidates/java/current/jre
+
 echo "Installing docker"
 
 sudo apt-get update
@@ -62,4 +64,4 @@ mvn clean install
 cd..
 echo "Installing dvwa"
 sudo docker pull vulnerables/web-dvwa
-sudo docker run --rm -it -p 80:80 vulnerables/web-dvwa
+#sudo docker run --rm -it -p 80:80 vulnerables/web-dvwa
