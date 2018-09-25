@@ -16,6 +16,8 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java
 sdk install maven
 
+source ~/.bashrc
+
 echo "Installing docker"
 
 sudo apt-get update
@@ -51,7 +53,7 @@ chmod +x burp.sh
 sudo ./burp.sh
 
 echo "Installing web goat"
-git clone git@github.com:WebGoat/WebGoat.git
+git clone https://github.com/dalgarins/lab_vuln.git
 cd WebGoat
 git checkout master
 mvn clean install
